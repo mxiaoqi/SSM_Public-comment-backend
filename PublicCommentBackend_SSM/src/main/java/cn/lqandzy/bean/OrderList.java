@@ -1,4 +1,4 @@
-package cn.lqnadzy.bean;
+package cn.lqandzy.bean;
 
 public class OrderList {
 	

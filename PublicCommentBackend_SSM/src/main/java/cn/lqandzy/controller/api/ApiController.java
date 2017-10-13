@@ -6,11 +6,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import cn.lqnadzy.bean.Ad;
-import cn.lqnadzy.bean.BusinessList;
-import cn.lqnadzy.bean.CommentList;
-import cn.lqnadzy.bean.Detail;
-import cn.lqnadzy.bean.OrderList;
+
+import cn.lqandzy.bean.Ad;
+import cn.lqandzy.bean.BusinessList;
+import cn.lqandzy.bean.CommentList;
+import cn.lqandzy.bean.Detail;
+import cn.lqandzy.bean.OrderList;
 
 @RestController
 @RequestMapping("api")

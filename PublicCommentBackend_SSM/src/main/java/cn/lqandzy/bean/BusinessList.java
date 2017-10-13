@@ -1,25 +1,25 @@
-package cn.lqnadzy.bean;
+package cn.lqandzy.bean;
 
 import java.util.List;
 
-public class CommentList {
+public class BusinessList {
 	private boolean hasMore;
-	private List<Comment> data;
+	private List<Business> data;
 	public boolean isHasMore() {
 		return hasMore;
 	}
 	public void setHasMore(boolean hasMore) {
 		this.hasMore = hasMore;
 	}
-	public List<Comment> getData() {
+	public List<Business> getData() {
 		return data;
 	}
-	public void setData(List<Comment> data) {
+	public void setData(List<Business> data) {
 		this.data = data;
 	}
 	@Override
 	public String toString() {
-		return "CommentList [hasMore=" + hasMore + ", data=" + data + "]";
+		return "BusinessList [hasMore=" + hasMore + ", data=" + data + "]";
 	}
 	
 }

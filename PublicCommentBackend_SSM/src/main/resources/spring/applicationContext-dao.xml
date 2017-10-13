@@ -15,7 +15,8 @@
 
 
 	<!-- 加载db.properties文件中的内容，db.properties文件中key命名要有一定的特殊规则 -->
-	<context:property-placeholder location="classpath:db.properties" />
+	<!-- <context:property-placeholder location="classpath:db.properties" /> -->
+	
 	<!-- 配置数据源 ，c3p0 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.lqandzy.mapper.AdMapper">
+	<resultMap id="BaseResultMap" type="cn.lqandzy.bean.Ad">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="user" property="user" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="CHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+		<result column="school" property="school" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<insert id="addAd">
+		insert into ad(title,img_file_name,link,weight)
+		value(#{title},#{imgFileName},#{link},#{weight});
+	</insert>
+</mapper>
