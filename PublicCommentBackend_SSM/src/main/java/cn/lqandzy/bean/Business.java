@@ -1,6 +1,10 @@
 package cn.lqandzy.bean;
 
-
+/**
+ * 
+ * @author Administrator
+ * 
+ */
 public class Business{
     private String img;
 	private String title;

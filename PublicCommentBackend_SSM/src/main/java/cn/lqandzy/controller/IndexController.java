@@ -5,6 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("index")
+/**
+ * 
+ * @author Administrator
+ * 
+ */
 public class IndexController {
 	
 	@RequestMapping()

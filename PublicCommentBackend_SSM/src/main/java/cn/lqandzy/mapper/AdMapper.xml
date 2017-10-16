@@ -14,4 +14,14 @@
 		insert into ad(title,img_file_name,link,weight)
 		value(#{title},#{imgFileName},#{link},#{weight});
 	</insert>
+	
+	<select id="selectByPage" resultType="Ad">
+		select id,title,img_file_name,link,weight from ad
+		<where>
+			<if test="title != null and title != ''">
+				title like '%' #{title} '%'
+			</if>
+		</where>
+		order by weight desc,id
+	</select>
 </mapper>

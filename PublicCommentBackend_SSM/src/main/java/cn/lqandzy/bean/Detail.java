@@ -1,5 +1,9 @@
 package cn.lqandzy.bean;
-
+/**
+ * 
+ * @author Administrator
+ * 
+ */
 public class Detail {
 	private String img;
     private String title;

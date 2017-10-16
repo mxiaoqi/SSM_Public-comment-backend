@@ -15,6 +15,11 @@ import cn.lqandzy.bean.OrderList;
 
 @RestController
 @RequestMapping("api")
+/**
+ * 
+ * @author Administrator
+ * 
+ */
 public class ApiController {
 	@RequestMapping(value="/homead",method={RequestMethod.GET})
 	public List<Ad> homead() throws Exception{

@@ -1,5 +1,9 @@
 package cn.lqandzy.bean;
-
+/**
+ * 
+ * @author Administrator
+ * 
+ */
 public class Comment {
 	  private String username;
       private String comment;

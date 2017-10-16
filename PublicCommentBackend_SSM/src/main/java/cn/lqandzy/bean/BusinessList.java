@@ -1,7 +1,11 @@
 package cn.lqandzy.bean;
 
 import java.util.List;
-
+/**
+ * 
+ * @author Administrator
+ * 
+ */
 public class BusinessList {
 	private boolean hasMore;
 	private List<Business> data;

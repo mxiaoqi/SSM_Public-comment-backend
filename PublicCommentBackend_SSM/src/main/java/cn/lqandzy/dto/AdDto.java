@@ -3,7 +3,11 @@ package cn.lqandzy.dto;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.lqandzy.bean.Ad;
-
+/**
+ * 
+ * @author Administrator
+ * 
+ */
 public class AdDto extends Ad{
 	private String img;
 	private MultipartFile imgFile;

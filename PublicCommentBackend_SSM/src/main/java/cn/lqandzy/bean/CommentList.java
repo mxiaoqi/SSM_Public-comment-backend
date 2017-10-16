@@ -1,7 +1,11 @@
 package cn.lqandzy.bean;
 
 import java.util.List;
-
+/**
+ * 
+ * @author Administrator
+ * 
+ */
 public class CommentList {
 	private boolean hasMore;
 	private List<Comment> data;

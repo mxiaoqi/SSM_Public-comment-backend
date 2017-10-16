@@ -1,5 +1,9 @@
 package cn.lqandzy.bean;
-
+/**
+ * 
+ * @author Administrator
+ * 
+ */
 public class OrderList {
 	
 	private String id;

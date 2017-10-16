@@ -1,7 +1,17 @@
 package cn.lqandzy.constant;
-
+/**
+ * 
+ * @author Administrator
+ * 
+ */
 public enum PageCodeEnum {
+	/**
+	 * 新增成功
+	 */
 	ADD_SUCCESS(1000,"新增成功"),
+	/**
+	 * 新增失败
+	 */
 	ADD_FAIL(1001,"新增失败");
 	
 	private Integer code;
