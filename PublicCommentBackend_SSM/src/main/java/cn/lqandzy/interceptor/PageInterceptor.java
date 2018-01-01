@@ -1,11 +1,10 @@
-package cn.lqandzy.mapper.interceptor;
+package cn.lqandzy.interceptor;
 
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Properties;
-
 import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
@@ -22,8 +21,7 @@ import org.apache.ibatis.reflection.SystemMetaObject;
 import cn.lqandzy.bean.BaseBean;
 import cn.lqandzy.bean.Page;
 
-
-@Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class,Integer.class }) })  
+@Intercepts({@Signature(type=StatementHandler.class,method="prepare",args={Connection.class})})
 public class PageInterceptor implements Interceptor{
 
 	public Object intercept(Invocation arg0) throws Throwable {

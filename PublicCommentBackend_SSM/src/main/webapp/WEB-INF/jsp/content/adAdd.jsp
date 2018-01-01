@@ -13,7 +13,7 @@
 	</head>
 	<body style="background: #e1e9eb;">
 		<form id="mainForm" method="post" action="${pageContext.request.contextPath}/ad/add.action" enctype="multipart/form-data">
-			<input type="hidden" id="message" value="${pageCode.msg}"/>
+			<input type="hidden"  id="message" value="${pageCode.msg}"/>
 			<input type="hidden" id="basePath" value="${pageContext.request.contextPath}"/>
 			<div class="right">
 				<div class="current">当前位置：<a href="###">内容管理</a> &gt; 广告管理</div>

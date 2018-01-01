@@ -14,10 +14,13 @@ public enum PageCodeEnum {
 	 */
 	ADD_FAIL(1001,"新增失败");
 	
+	
+	
 	private Integer code;
 	private String msg;
-	
 	public static final String KEY="pageCode";
+	
+	
 	
 	private PageCodeEnum(Integer code, String msg) {
 		this.code = code;

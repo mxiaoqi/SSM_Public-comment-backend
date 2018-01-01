@@ -22,11 +22,14 @@
 	src="${pageContext.request.contextPath}/js/content/adList.js"></script>
 </head>
 <body style="background: #e1e9eb;">
-	<form action="${pageContext.request.contextPath}/ad/search"
+	<form action="${pageContext.request.contextPath}/ad/search.action"
 		id="mainForm" method="post">
-		<input type="hidden" id="id" name="id" /> <input type="hidden"
-			id="message" value="${pageCode.msg}" /> <input type="hidden"
-			id="basePath" value="${pageContext.request.contextPath}" /> <input
+		<input type="hidden" id="id" name="id" /> 
+		<input type="hidden"
+			id="message" value="${pageCode.msg}" /> 
+		<input type="hidden"
+			id="basePath" value="${pageContext.request.contextPath}" />
+	    <input
 			type="hidden" name="page.currentPage" id="currentPage" value="1" />
 		<div class="right">
 			<div class="current">
@@ -62,14 +65,17 @@
 									<td>${s.index + 1}</td>
 									<td>${item.title}</td>
 									<td>${item.link}</td>
-									<td><a href="javascript:void(0);"
-										onclick="modifyInit('${item.id}')">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<td>
+										<a href="javascript:void(0);" onclick="modifyInit('${item.id}')">修改</a>
+										&nbsp;&nbsp;&nbsp;&nbsp;
 										<a href="javascript:void(0);" onclick="remove('${item.id}')">删除</a>
 									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
+					
+					
 					
 					<!-- 分页 -->
 					<t:page jsMethodName="search" page="${searchParam.page}"></t:page>

@@ -10,7 +10,7 @@
 		<result column="school" property="school" jdbcType="VARCHAR" />
 	</resultMap>
 
-	<insert id="addAd">
+	<insert id="insert">
 		insert into ad(title,img_file_name,link,weight)
 		value(#{title},#{imgFileName},#{link},#{weight});
 	</insert>

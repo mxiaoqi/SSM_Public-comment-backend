@@ -4,13 +4,13 @@
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"/>
 	    <title>大众点评后台管理</title>
-	    <link href="${pageContext.request.contextPath}/css/all.css" rel="stylesheet" type="text/css"/>
-	    <link href="${pageContext.request.contextPath}/css/pop.css" rel="stylesheet" type="text/css"/>
-	    <link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css"/>
-	    <script src="${pageContext.request.contextPath}/js/common/jquery-1.8.3.js" type="text/javascript"></script>
-	    <script src="${pageContext.request.contextPath}/js/common/common.js" type="text/javascript"></script>
-	    <script src="${pageContext.request.contextPath}/js/common/json.js" type="text/javascript"></script>
-	    <script src="${pageContext.request.contextPath}/js/system/index.js" type="text/javascript"></script>
+	    <link href="css/all.css" rel="stylesheet" type="text/css"/>
+	    <link href="css/pop.css" rel="stylesheet" type="text/css"/>
+	    <link href="css/index.css" rel="stylesheet" type="text/css"/>
+	    <script src="js/common/jquery-1.8.3.js" type="text/javascript"></script>
+	    <script src="js/common/common.js" type="text/javascript"></script>
+	    <script src="js/common/json.js" type="text/javascript"></script>
+	    <script src="js/system/index.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<!-- 蒙版DIV -->

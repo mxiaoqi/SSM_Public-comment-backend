@@ -8,6 +8,7 @@
 		if(!rule.test(currentPage)) {
 			currentPage = 1;
 		}
+		//调用js方法
 		eval("${jsMethodName}(currentPage)");
 	}
 </script>
