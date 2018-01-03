@@ -43,15 +43,24 @@ public class AdController {
 	public String search(Model model,AdDto adDto) throws Exception{
 		model.addAttribute("list", adService.searchByPage(adDto));
 		model.addAttribute("searchParam", adDto);
+		
 		return "content/adList";
 	}
 	
 	@RequestMapping(value="/remove")
-	public String remove(@RequestParam("id") long id) throws Exception{
-		System.out.println("11111111111111111111111111");
+	public String remove(@RequestParam("id") Long id,@RequestParam("page.currentPage")Integer currentPage,Model model,HttpServletRequest request) throws Exception{
+		int i = adService.deleteAd(id);
 		
+		if(i>0)
+		{
+			model.addAttribute(PageCodeEnum.KEY,PageCodeEnum.REMOVE_SUCCESS);
+		}else{
+			model.addAttribute(PageCodeEnum.KEY,PageCodeEnum.REMOVE_FAIL);
+		}
 		
-		return "forward:content/adList";
+		//储存当前分页数
+		request.setAttribute("currentPage", currentPage);
+		return "forward:/ad/search.action";
 	}
 	
 	@RequestMapping(value="/add")
@@ -62,6 +71,29 @@ public class AdController {
 			model.addAttribute(PageCodeEnum.KEY,PageCodeEnum.ADD_FAIL);
 		}
 		return "/content/adAdd";
+	}
+	
+	/**
+	 * 修改页初始化
+	 */
+	@RequestMapping("/modifyInit")
+	public String modifyInit(Model model, @RequestParam("id") Long id) {
+		model.addAttribute("modifyObj", adService.getById(id));
+		return "/content/adModify";
+	}
+	
+	/**
+	 * 修改
+	 */
+	@RequestMapping("/modify")
+	public String modify(Model model, AdDto adDto) {
+		model.addAttribute("modifyObj", adDto);
+		if (adService.modify(adDto)) {
+			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.MODIFY_SUCCESS);
+		} else {
+			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.MODIFY_FAIL);
+		}
+		return "/content/adModify";
 	}
 	
 }

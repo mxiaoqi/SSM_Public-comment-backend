@@ -1,4 +1,5 @@
 $(function() {
+	//调用显示信息的方法
 	common.showMessage($("#message").val());
 	$("#mainForm").validate({
 		rules : {
@@ -21,5 +22,5 @@ function modify() {
 }
 
 function goback() {
-	location.href = $('#basePath').val() + '/ad';
+	location.href = $('#basePath').val() + '/ad.action';
 }

@@ -33,24 +33,41 @@ public class Page {
 		return totalNumber;
 	}
 	
+	/**
+	 * 重新计算page属性
+	 */
 	private void count() {
 		this.totalPage = this.totalNumber / this.pageNumber;
+		
+		//不整除
 		if(this.totalNumber % this.pageNumber > 0) {
 			this.totalPage++;
 		}
+		
+		//除不满
 		if(this.totalPage <= 0) {
 			this.totalPage = 1;
 		}
+		
+		//当前页>总页数
 		if(this.currentPage > this.totalPage) {
 			this.currentPage = this.totalPage;
 		}
+		
+		//当前页<0
 		if(this.currentPage <= 0) {
 			this.currentPage = 1;
 		}
+		
 	}
 	
+    /**
+     * 设置总条数
+     * @param totalNumber 总条数
+     */
 	public void setTotalNumber(int totalNumber) {
 		this.totalNumber = totalNumber;
+		
 		this.count();
 	}
 	

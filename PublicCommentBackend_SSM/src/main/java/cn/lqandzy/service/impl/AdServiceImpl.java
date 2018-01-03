@@ -1,9 +1,9 @@
 package cn.lqandzy.service.impl;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +13,7 @@ import cn.lqandzy.bean.Ad;
 import cn.lqandzy.dto.AdDto;
 import cn.lqandzy.mapper.AdMapper;
 import cn.lqandzy.service.AdService;
+import cn.lqandzy.util.FileUtil;
 
 /**
  * 
@@ -87,6 +88,63 @@ public class AdServiceImpl implements AdService {
 			BeanUtils.copyProperties(ad, adDtoTemp);
 		}
 		return result;
+	}
+
+	@Override
+	public int deleteAd(Long id) throws Exception {
+		int delete=0;
+		if(id!=null)
+		{
+			delete = adMapper.delete(id);
+		}
+		return delete;
+	}
+
+	@Override
+	public boolean modify(AdDto adDto) {
+		Ad ad = new Ad();
+		
+		ad=adMapper.selectById(adDto.getId());
+		
+		String fileName = ad.getImgFileName();
+		
+		
+		
+		BeanUtils.copyProperties(adDto, ad);
+		
+		if (adDto.getImgFile() != null && adDto.getImgFile().getSize() > 0) {
+			try {
+				//保存图片
+				ad.setImgFileName(FileUtil.save(adDto.getImgFile(), adImageSavePath));
+			} catch (IllegalStateException | IOException e) {
+				// TODO 需要添加日志
+				return false;
+			}
+		}
+		
+		
+		int updateCount = adMapper.update(ad);
+		
+		if (updateCount != 1) {
+			return false;
+		}
+		
+		
+		if (fileName != null) {
+			return FileUtil.delete(adImageSavePath + fileName);
+		}
+		
+		return true;
+	}
+
+	@Override
+	public AdDto getById(Long id) {
+		AdDto adDto=new AdDto();
+		Ad ad = adMapper.selectById(id);
+		BeanUtils.copyProperties(ad, adDto);
+		adDto.setImg(adImageUrl+ad.getImgFileName());
+		
+		return adDto;
 	}
 
 }

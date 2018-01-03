@@ -14,6 +14,7 @@
 </script>
 
 <div class="page fix">
+	${page.currentPage}    
 	<a href="javascript:transCurrentPage('1');" class="first">首页</a>
 	<a href="javascript:transCurrentPage('${page.currentPage - 1}');" class="pre">上一页</a>
 	当前第<span>${page.currentPage}/${page.totalPage}</span>页

@@ -30,7 +30,7 @@
 		<input type="hidden"
 			id="basePath" value="${pageContext.request.contextPath}" />
 	    <input
-			type="hidden" name="page.currentPage" id="currentPage" value="1" />
+			type="hidden" name="page.currentPage" id="currentPage"/>
 		<div class="right">
 			<div class="current">
 				当前位置：<a href="#">内容管理</a> &gt; 广告管理
@@ -68,7 +68,7 @@
 									<td>
 										<a href="javascript:void(0);" onclick="modifyInit('${item.id}')">修改</a>
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										<a href="javascript:void(0);" onclick="remove('${item.id}')">删除</a>
+										<a href="javascript:void(0);" onclick="remove('${item.id}','${searchParam.page.currentPage}')">删除</a>
 									</td>
 								</tr>
 							</c:forEach>

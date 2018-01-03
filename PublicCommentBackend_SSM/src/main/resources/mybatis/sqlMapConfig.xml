@@ -4,6 +4,11 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<!-- 全局setting配置，根据需要添加 -->
+	<settings>
+		<setting name="useGeneratedKeys" value="true"/>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
 	<!-- 配置别名 -->
 	<typeAliases>
 		<!-- 批量扫描别名 -->

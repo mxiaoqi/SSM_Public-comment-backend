@@ -40,11 +40,14 @@ public class PageInterceptor implements Interceptor{
 			ParameterHandler parameterHandler = (ParameterHandler)metaObject.getValue("delegate.parameterHandler");
 			parameterHandler.setParameters(statement);
 			ResultSet rs = statement.executeQuery();
+			
 			BaseBean bean = (BaseBean)boundSql.getParameterObject();
 			Page page = bean.getPage();
+			
 			if(rs.next()) {
 				page.setTotalNumber(rs.getInt(1));
 			}
+			
 			String pageSql = sql + " limit " + (page.getCurrentPage() - 1) * page.getPageNumber() + "," + page.getPageNumber();
 			metaObject.setValue("delegate.boundSql.sql", pageSql);
 		}
