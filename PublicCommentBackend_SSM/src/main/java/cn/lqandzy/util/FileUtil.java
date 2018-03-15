@@ -24,7 +24,6 @@ public class FileUtil {
 			if (!fileFolder.exists()) {
 				fileFolder.mkdirs();
 			}
-			//生成需要保存的文件路径
 			File saveFile = getFile(savePath, file.getOriginalFilename());
 			file.transferTo(saveFile);
 			return saveFile.getName();
@@ -48,12 +47,9 @@ public class FileUtil {
 		return false;
 	}
 
-	
-	
 	private static File getFile(String savePath, String originalFilename) {
 		String fileName = System.currentTimeMillis() + "_" + originalFilename;
 		File file = new File(savePath + fileName);
-		//如果文件存在
 		if (file.exists()) {
 			return getFile(savePath, originalFilename);
 		}

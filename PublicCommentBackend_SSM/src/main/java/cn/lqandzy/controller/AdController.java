@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import cn.lqandzy.constant.PageCodeEnum;
 import cn.lqandzy.dto.AdDto;
@@ -34,10 +35,7 @@ public class AdController {
 	}
 	
 	
-	@RequestMapping(value="/addList")
-	public String addList(){
-		return "content/adAdd";
-	}
+	
 	
 	@RequestMapping(value="/search")
 	public String search(Model model,AdDto adDto) throws Exception{
@@ -63,7 +61,12 @@ public class AdController {
 		return "forward:/ad/search.action";
 	}
 	
-	@RequestMapping(value="/add")
+	@RequestMapping(value="/add",method={RequestMethod.GET})
+	public String addPage(){
+		return "content/adAdd";
+	}
+	
+	@RequestMapping(value="/add",method={RequestMethod.POST})
 	public String add(AdDto adDto,Model model) throws Exception{
 		if(adService.addAd(adDto)){
 			model.addAttribute(PageCodeEnum.KEY,PageCodeEnum.ADD_SUCCESS);

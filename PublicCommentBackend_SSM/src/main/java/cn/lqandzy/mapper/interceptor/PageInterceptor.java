@@ -19,11 +19,8 @@ import org.apache.ibatis.reflection.DefaultReflectorFactory;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 
-import cn.lqandzy.bean.BaseBean;
-import cn.lqandzy.bean.Page;
 
-
-@Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class,Integer.class }) })  
+/*@Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class,Integer.class }) })  
 public class PageInterceptor implements Interceptor{
 
 	public Object intercept(Invocation arg0) throws Throwable {
@@ -62,4 +59,4 @@ public class PageInterceptor implements Interceptor{
 		
 	}
 
-}
+}*/

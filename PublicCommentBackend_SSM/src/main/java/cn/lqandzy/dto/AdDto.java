@@ -2,21 +2,22 @@ package cn.lqandzy.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
 import cn.lqandzy.bean.Ad;
-/**
- * 
- * @author Administrator
- * 
- */
-//忽略没有的数据
-@JsonInclude(Include.NON_NULL)
+
+/** 
+* 
+* @author : 慕祈
+* @date 创建时间：2018年3月15日 下午8:05:12 
+* @version 1.0 
+* @parameter  
+* @since  
+* @return  
+*/
 public class AdDto extends Ad{
 	private String img;
-	private MultipartFile imgFile;
 	
+	private MultipartFile imgFile;
+
 	public String getImg() {
 		return img;
 	}
@@ -35,9 +36,6 @@ public class AdDto extends Ad{
 
 	@Override
 	public String toString() {
-		return "AdDto [img=" + img + ", imgFile=" + imgFile + ", getWeight()=" + getWeight() + ", getTitle()="
-				+ getTitle() + ", getImgFileName()=" + getImg() + ", getLink()=" + getLink() + ", toString()="
-				+ super.toString() + "]";
+		return "AdDto [img=" + img + ", imgFile=" + imgFile + "]";
 	}
-
 }

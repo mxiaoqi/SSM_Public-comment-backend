@@ -22,5 +22,5 @@ function modify() {
 }
 
 function goback() {
-	location.href = $('#basePath').val() + '/ad.action';
+	location.href = $('#basePath').val() + '/ad';
 }

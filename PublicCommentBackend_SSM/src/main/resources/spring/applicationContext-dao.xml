@@ -12,10 +12,6 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
-
-
-	<!-- 加载db.properties文件中的内容，db.properties文件中key命名要有一定的特殊规则 -->
-	<!-- <context:property-placeholder location="classpath:db.properties" /> -->
 	
 	<!-- 配置数据源 ，c3p0 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
@@ -50,7 +46,7 @@
 	-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 -->
-		<property name="basePackage" value="cn.lqandzy.mapper"></property>
+		<property name="basePackage" value="cn.lqandzy.dao"></property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 	

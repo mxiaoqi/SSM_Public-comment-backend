@@ -21,8 +21,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	 -->
 	 
 	 
-	 <plugins>
+	 <!-- <plugins>
        <plugin interceptor="cn.lqandzy.mapper.interceptor.PageInterceptor"></plugin>
-     </plugins>
+     </plugins> -->
 	
 </configuration>

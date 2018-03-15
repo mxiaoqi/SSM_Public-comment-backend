@@ -9,10 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import cn.lqandzy.bean.BusinessList;
-import cn.lqandzy.bean.CommentList;
-import cn.lqandzy.bean.Detail;
-import cn.lqandzy.bean.OrderList;
 import cn.lqandzy.dto.AdDto;
 import cn.lqandzy.service.AdService;
 
@@ -31,7 +27,7 @@ public class ApiController {
 	@Value("${ad.pageNumber}")
 	private String adPageNumber;
 	
-	@RequestMapping(value="/homead",method={RequestMethod.GET})
+	/*@RequestMapping(value="/homead",method={RequestMethod.GET})
 	public List<AdDto> homead() throws Exception{
 		
 		System.out.println(adPageNumber+"ssssssssssssssssssssssssssssssssssss");
@@ -79,7 +75,7 @@ public class ApiController {
 	@RequestMapping(value="/submitComment",method={RequestMethod.GET})
 	public void submitComment() throws Exception{
 		
-	}
+	}*/
 	
 	
 }

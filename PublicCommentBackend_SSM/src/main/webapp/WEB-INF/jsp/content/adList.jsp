@@ -9,26 +9,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
 <title></title>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/all.css" />
+	href="${basePath}/css/all.css" />
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/pop.css" />
+	href="${basePath}/css/pop.css" />
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/main.css" />
+	href="${basePath}/css/main.css" />
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/common/jquery-1.8.3.js"></script>
+	src="${basePath}/js/common/jquery-1.8.3.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/common/common.js"></script>
+	src="${basePath}/js/common/common.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/content/adList.js"></script>
+	src="${basePath}/js/content/adList.js"></script>
 </head>
 <body style="background: #e1e9eb;">
-	<form action="${pageContext.request.contextPath}/ad/search.action"
+	<form action="${basePath}/ad/search.action"
 		id="mainForm" method="post">
 		<input type="hidden" id="id" name="id" /> 
 		<input type="hidden"
 			id="message" value="${pageCode.msg}" /> 
 		<input type="hidden"
-			id="basePath" value="${pageContext.request.contextPath}" />
+			id="basePath" value="${basePath}" />
 	    <input
 			type="hidden" name="page.currentPage" id="currentPage"/>
 		<div class="right">
@@ -46,7 +46,7 @@
 							<td style="text-align: right;" width="150"><input
 								class="tabSub" value="查询" onclick="search('1');" type="button" />&nbsp;&nbsp;&nbsp;&nbsp;
 								<input class="tabSub" value="添加"
-								onclick="location.href='${pageContext.request.contextPath}/ad/addList.action'"
+								onclick="location.href='${basePath}/ad/addList.action'"
 								type="button" /></td>
 						</tr>
 					</tbody>

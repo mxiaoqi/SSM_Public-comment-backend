@@ -6,18 +6,18 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"/>
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/all.css"/>
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pop.css"/>
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/jquery.validate.css"/>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/common/jquery-1.8.3.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/common/validation/jquery.validate.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/common/validation/messages_zh.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/common/common.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/content/businessModify.js"></script>
+		<link rel="stylesheet" type="text/css" href="${basePath}/css/all.css"/>
+		<link rel="stylesheet" type="text/css" href="${basePath}/css/pop.css"/>
+		<link rel="stylesheet" type="text/css" href="${basePath}/css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="${basePath}/css/jquery.validate.css"/>
+		<script type="text/javascript" src="${basePath}/js/common/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="${basePath}/js/common/validation/jquery.validate.js"></script>
+		<script type="text/javascript" src="${basePath}/js/common/validation/messages_zh.js"></script>
+		<script type="text/javascript" src="${basePath}/js/common/common.js"></script>
+		<script type="text/javascript" src="${basePath}/js/content/businessModify.js"></script>
 	</head>
 	<body style="background: #e1e9eb;">
-		<form id="mainForm" method="post" action="${pageContext.request.contextPath}/businesses/${modifyObj.id}" enctype="multipart/form-data">
+		<form id="mainForm" method="post" action="${basePath}/businesses/${modifyObj.id}" enctype="multipart/form-data">
 			<input type="hidden" id="message" value="${pageCode.msg}"/>
 			<input type="hidden" name="_method" value="PUT"/>
 			<div class="right">

@@ -1,27 +1,24 @@
 package cn.lqandzy.bean;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
-/**
- * 
- * @author 张宇
- *
- */
-//忽略没有的数据
-@JsonInclude(Include.NON_NULL)
-public class Ad extends BaseBean{
+/** 
+* 
+* @author : 慕祈
+* @date 创建时间：2018年3月15日 下午7:54:11 
+* @version 1.0 
+* @parameter  
+* @since  
+* @return  
+*/
+public class Ad {
 	private Long id;
 	private String title;
-    private String imgFileName;
-    private String link;
-    private Long weight;
-    
-	public Long getWeight() {
-		return weight;
+	private String imgFileName;
+	private String link;
+	private Long weight;
+	public Long getId() {
+		return id;
 	}
-	public void setWeight(Long weight) {
-		this.weight = weight;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getTitle() {
 		return title;
@@ -29,8 +26,6 @@ public class Ad extends BaseBean{
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	
 	public String getImgFileName() {
 		return imgFileName;
 	}
@@ -43,17 +38,15 @@ public class Ad extends BaseBean{
 	public void setLink(String link) {
 		this.link = link;
 	}
-	
-	public Long getId() {
-		return id;
+	public Long getWeight() {
+		return weight;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setWeight(Long weight) {
+		this.weight = weight;
 	}
 	@Override
 	public String toString() {
 		return "Ad [id=" + id + ", title=" + title + ", imgFileName=" + imgFileName + ", link=" + link + ", weight="
 				+ weight + "]";
 	}
-	
-}
+}	

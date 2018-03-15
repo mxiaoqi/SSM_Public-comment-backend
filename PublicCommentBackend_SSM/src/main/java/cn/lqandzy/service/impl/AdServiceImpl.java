@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import cn.lqandzy.bean.Ad;
+import cn.lqandzy.dao.AdDao;
 import cn.lqandzy.dto.AdDto;
-import cn.lqandzy.mapper.AdMapper;
 import cn.lqandzy.service.AdService;
 import cn.lqandzy.util.FileUtil;
 
@@ -23,7 +23,7 @@ import cn.lqandzy.util.FileUtil;
 @Service
 public class AdServiceImpl implements AdService {
 	@Autowired
-	private AdMapper adMapper;
+	private AdDao adDao;
 
 	@Value("${adImage.savePath}")
 	private String adImageSavePath;
@@ -33,43 +33,40 @@ public class AdServiceImpl implements AdService {
 
 	
 	@Override
-	// TODO 后面可以改成失败的原因
+	// TODO 可以改成获取失败的原因
 	public boolean addAd(AdDto adDto) throws Exception {
 		//数据库对应的广告bean
 		Ad ad = new Ad();
-		
+		/************** 保存图片业务 ************/
 		if (adDto.getImgFile() != null && adDto.getImgFile().getSize()>0) {
-			
-			
-			/************** 保存图片业务 ************/
+			//重写图片文件名（防止图片重名。规则:毫秒级时间+_+文件原名）
 			String imgFileName = System.currentTimeMillis() + "_" + adDto.getImgFile().getOriginalFilename();
-			// 保存的文件
+			// 保存的文件(保存路径+文件名称)
 			File file = new File(adImageSavePath + imgFileName);
 			File fileFolder = new File(adImageSavePath);
-			// 保存路径不存在
+			// 如果保存路径不存在
 			if (!fileFolder.exists()) {
 				//多级文件一并创建
 				fileFolder.mkdirs();
 			}
-
-			
-			/************** 保存图片业务 ************/
 			try {
 				// 保存图片到磁盘
 				adDto.getImgFile().transferTo(file);
+				//spring的对象赋值类
 				BeanUtils.copyProperties(adDto, ad);
 				ad.setImgFileName(imgFileName);
 			} catch (Exception e) {
 				// TODO 以后可以添加日志的功能
 				return false;
 			}
+		/************** 保存图片业务 ************/	
 			
+			//保存广告数据
+			adDao.insert(ad);
 			
-			/************** 保存广告业务 *************/
-			adMapper.insert(adDto);
-			/************** 保存广告业务 *************/
 			return true;
 		} else {
+			//文件为空，不允许保存
 			return false;
 		}
 
@@ -77,34 +74,35 @@ public class AdServiceImpl implements AdService {
 
 	@Override
 	public List<AdDto> searchByPage(AdDto adDto) {
-		List<AdDto> result = new ArrayList<AdDto>();
+		/*List<AdDto> result = new ArrayList<AdDto>();
 		Ad condition = new Ad();
 		BeanUtils.copyProperties(adDto, condition);
-		List<Ad> adList = adMapper.selectByPage(condition);
+		List<Ad> adList = adDao.selectByPage(condition);
 		for (Ad ad : adList) {
 			AdDto adDtoTemp = new AdDto();
 			result.add(adDtoTemp);
 			adDtoTemp.setImg(adImageUrl + ad.getImgFileName());
 			BeanUtils.copyProperties(ad, adDtoTemp);
-		}
-		return result;
+		}*/
+		return null;
 	}
 
 	@Override
 	public int deleteAd(Long id) throws Exception {
-		int delete=0;
+		/*int delete=0;
 		if(id!=null)
 		{
-			delete = adMapper.delete(id);
-		}
-		return delete;
+			delete = adDao.delete(id);
+		}*/
+		return (Integer) null;
 	}
 
 	@Override
 	public boolean modify(AdDto adDto) {
-		Ad ad = new Ad();
+		return false;
+		/*Ad ad = new Ad();
 		
-		ad=adMapper.selectById(adDto.getId());
+		ad=adDao.selectById(adDto.getId());
 		
 		String fileName = ad.getImgFileName();
 		
@@ -123,7 +121,7 @@ public class AdServiceImpl implements AdService {
 		}
 		
 		
-		int updateCount = adMapper.update(ad);
+		int updateCount = adDao.update(ad);
 		
 		if (updateCount != 1) {
 			return false;
@@ -134,17 +132,17 @@ public class AdServiceImpl implements AdService {
 			return FileUtil.delete(adImageSavePath + fileName);
 		}
 		
-		return true;
+		return true;*/
 	}
 
 	@Override
 	public AdDto getById(Long id) {
-		AdDto adDto=new AdDto();
-		Ad ad = adMapper.selectById(id);
+		/*AdDto adDto=new AdDto();
+		Ad ad = adDao.selectById(id);
 		BeanUtils.copyProperties(ad, adDto);
-		adDto.setImg(adImageUrl+ad.getImgFileName());
+		adDto.setImg(adImageUrl+ad.getImgFileName());*/
 		
-		return adDto;
+		return null;
 	}
 
 }
