@@ -84,8 +84,8 @@
 		                <td class="leftTd" style="vertical-align:top" width="150">
 		                    <div class="left">
 		                        <div class="ileft" id="subMenuDiv">
-		                        	<div class="ileft" id="menuDiv"><h3 onclick="clickSubMenu(this,'${basePath}/ad.action')">广告管理</h3></div>
-		                        	<div class="ileft" id="menuDiv"><h3 onclick="clickSubMenu(this,'${basePath}/businesses.action')">商户管理</h3></div>
+		                        	<div class="ileft" id="menuDiv"><h3 onclick="clickSubMenu(this,'${basePath}/ad')">广告管理</h3></div>
+		                        	<div class="ileft" id="menuDiv"><h3 onclick="clickSubMenu(this,'${basePath}/businesses')">商户管理</h3></div>
 		                        </div>
 		                    </div>
 		                </td>
@@ -93,7 +93,7 @@
 		                    <div class="pointer"></div>
 		                </td>
 		                <td style="vertical-align:top" height="600px" width="100%">
-		                	<br/><iframe id="mainPage" src="${basePath}/ad/add.action" frameborder="0" height="580px" width="100%"></iframe><br/>
+		                	<br/><iframe id="mainPage" src="${basePath}/ad" frameborder="0" height="580px" width="100%"></iframe><br/>
 		                 </td>
 		            </tr>
 		            </tbody>

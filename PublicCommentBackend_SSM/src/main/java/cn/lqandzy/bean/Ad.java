@@ -1,4 +1,8 @@
 package cn.lqandzy.bean;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /** 
 * 
 * @author : 慕祈
@@ -8,7 +12,8 @@ package cn.lqandzy.bean;
 * @since  
 * @return  
 */
-public class Ad {
+@JsonInclude(Include.NON_NULL)
+public class Ad extends BaseBean{
 	private Long id;
 	private String title;
 	private String imgFileName;

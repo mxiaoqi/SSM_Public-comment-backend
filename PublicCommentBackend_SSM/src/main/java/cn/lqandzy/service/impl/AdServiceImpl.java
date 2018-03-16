@@ -1,19 +1,16 @@
 package cn.lqandzy.service.impl;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import cn.lqandzy.bean.Ad;
 import cn.lqandzy.dao.AdDao;
 import cn.lqandzy.dto.AdDto;
 import cn.lqandzy.service.AdService;
-import cn.lqandzy.util.FileUtil;
 
 /**
  * 
@@ -33,8 +30,8 @@ public class AdServiceImpl implements AdService {
 
 	
 	@Override
-	// TODO 可以改成获取失败的原因
 	public boolean addAd(AdDto adDto) throws Exception {
+		// TODO 可以改成获取失败的原因
 		//数据库对应的广告bean
 		Ad ad = new Ad();
 		/************** 保存图片业务 ************/
@@ -72,29 +69,33 @@ public class AdServiceImpl implements AdService {
 
 	}
 
+	/**
+	 * 分页查询
+	 */
 	@Override
 	public List<AdDto> searchByPage(AdDto adDto) {
-		/*List<AdDto> result = new ArrayList<AdDto>();
+		List<AdDto> result = new ArrayList<AdDto>();
 		Ad condition = new Ad();
 		BeanUtils.copyProperties(adDto, condition);
 		List<Ad> adList = adDao.selectByPage(condition);
 		for (Ad ad : adList) {
 			AdDto adDtoTemp = new AdDto();
+			//返回集合添加adDto
 			result.add(adDtoTemp);
 			adDtoTemp.setImg(adImageUrl + ad.getImgFileName());
 			BeanUtils.copyProperties(ad, adDtoTemp);
-		}*/
-		return null;
+		}
+		return result;
 	}
 
 	@Override
 	public int deleteAd(Long id) throws Exception {
-		/*int delete=0;
+		int delete=0;
 		if(id!=null)
 		{
 			delete = adDao.delete(id);
-		}*/
-		return (Integer) null;
+		}
+		return delete;
 	}
 
 	@Override

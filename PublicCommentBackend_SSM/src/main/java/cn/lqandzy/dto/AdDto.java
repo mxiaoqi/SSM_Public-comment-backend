@@ -2,6 +2,9 @@ package cn.lqandzy.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import cn.lqandzy.bean.Ad;
 
 /** 
@@ -13,6 +16,7 @@ import cn.lqandzy.bean.Ad;
 * @since  
 * @return  
 */
+@JsonInclude(Include.NON_NULL)
 public class AdDto extends Ad{
 	private String img;
 	

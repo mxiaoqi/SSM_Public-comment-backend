@@ -1,5 +1,4 @@
-package cn.lqandzy.mapper.interceptor;
-
+package cn.lqandzy.dao.interceptor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,10 +18,14 @@ import org.apache.ibatis.reflection.DefaultReflectorFactory;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 
+import cn.lqandzy.bean.BaseBean;
+import cn.lqandzy.bean.Page;
 
-/*@Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class,Integer.class }) })  
+@Intercepts({@Signature(type=StatementHandler.class,method="prepare",args={Connection.class,Integer.class })})
 public class PageInterceptor implements Interceptor{
-
+	/**
+	 * 拦截带有ByPage结尾的sql方法，获取总行数，然后交给page对象处理
+	 */
 	public Object intercept(Invocation arg0) throws Throwable {
 		StatementHandler statementHandler = (StatementHandler)arg0.getTarget();
 		MetaObject metaObject = MetaObject.forObject(statementHandler, SystemMetaObject.DEFAULT_OBJECT_FACTORY, SystemMetaObject.DEFAULT_OBJECT_WRAPPER_FACTORY,new DefaultReflectorFactory());
@@ -37,14 +40,12 @@ public class PageInterceptor implements Interceptor{
 			ParameterHandler parameterHandler = (ParameterHandler)metaObject.getValue("delegate.parameterHandler");
 			parameterHandler.setParameters(statement);
 			ResultSet rs = statement.executeQuery();
-			
+			//TODO 了解分页的原理   慕课网的源生活分页视频
 			BaseBean bean = (BaseBean)boundSql.getParameterObject();
 			Page page = bean.getPage();
-			
 			if(rs.next()) {
 				page.setTotalNumber(rs.getInt(1));
 			}
-			
 			String pageSql = sql + " limit " + (page.getCurrentPage() - 1) * page.getPageNumber() + "," + page.getPageNumber();
 			metaObject.setValue("delegate.boundSql.sql", pageSql);
 		}
@@ -59,4 +60,4 @@ public class PageInterceptor implements Interceptor{
 		
 	}
 
-}*/
+}

@@ -36,7 +36,13 @@ public class AdController {
 	
 	
 	
-	
+	/**
+	 * 根据参数查询广告列表数据
+	 * @param model
+	 * @param adDto 广告类传输对象
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/search")
 	public String search(Model model,AdDto adDto) throws Exception{
 		model.addAttribute("list", adService.searchByPage(adDto));
@@ -44,9 +50,16 @@ public class AdController {
 		
 		return "content/adList";
 	}
-	
+	/**
+	 * 
+	 * @param id 要删除的广告id
+	 * @param currentPage 当前分页的当前页数
+	 * @param model 
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/remove")
-	public String remove(@RequestParam("id") Long id,@RequestParam("page.currentPage")Integer currentPage,Model model,HttpServletRequest request) throws Exception{
+	public String remove(@RequestParam("id") Long id,@RequestParam("page.currentPage")Integer currentPage,Model model) throws Exception{
 		int i = adService.deleteAd(id);
 		
 		if(i>0)
@@ -57,8 +70,8 @@ public class AdController {
 		}
 		
 		//储存当前分页数
-		request.setAttribute("currentPage", currentPage);
-		return "forward:/ad/search.action";
+		model.addAttribute("currentPage", currentPage);
+		return "forward:/ad/search";
 	}
 	
 	@RequestMapping(value="/add",method={RequestMethod.GET})

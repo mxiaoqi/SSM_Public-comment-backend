@@ -14,9 +14,9 @@ import cn.lqandzy.service.AdService;
 
 
 /**
- * 
- * @author Administrator
- * 
+ * 前后分离，前端需要的接口
+ * @author 慕祈
+ *
  */
 @RestController
 @RequestMapping("api")
@@ -27,16 +27,13 @@ public class ApiController {
 	@Value("${ad.pageNumber}")
 	private String adPageNumber;
 	
-	/*@RequestMapping(value="/homead",method={RequestMethod.GET})
+	@RequestMapping(value="/homead",method={RequestMethod.GET})
 	public List<AdDto> homead() throws Exception{
-		
-		System.out.println(adPageNumber+"ssssssssssssssssssssssssssssssssssss");
 		AdDto adDto=new AdDto();
 		adDto.getPage().setPageNumber(Integer.parseInt(adPageNumber));
-		
 		return adService.searchByPage(adDto);
 	}
-	
+	/*
 	@RequestMapping(value="/homelist/{city}/{page}",method={RequestMethod.GET})
 	public BusinessList homelist() throws Exception{
 		ObjectMapper objectMapper=new ObjectMapper();

@@ -6,7 +6,7 @@
 		values(#{title},#{imgFileName},#{link},#{weight})
 	</insert>
 	
-	<!-- <select id="selectByPage" resultType="Ad">
+	<select id="selectByPage" resultType="Ad">
 		select id,title,img_file_name,link,weight from ad
 		<where>
 			<if test="title != null and title != ''">
@@ -15,11 +15,11 @@
 		</where>
 		order by weight desc,id
 	</select>
-	
+
 	<delete id="delete" parameterType="Long">
-		delete from ad where id=#{id};
+		delete from ad where id= #{id}
 	</delete>
-	
+	<!-- 
 	<select id="selectById" parameterType="Long" resultType="ad">
 		select * from ad where id=#{id};
 	</select>

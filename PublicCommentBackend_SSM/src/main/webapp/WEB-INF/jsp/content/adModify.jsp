@@ -15,7 +15,7 @@
 		<script type="text/javascript" src="${basePath}/js/content/adModify.js"></script>
 	</head>
 	<body style="background: #e1e9eb;">
-		<form id="mainForm" method="post" action="${basePath}/ad/modify.action" enctype="multipart/form-data">
+		<form id="mainForm" method="post" action="${basePath}/ad/modify" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${modifyObj.id}"/>
 			<input type="hidden" id="message" value="${pageCode.msg}"/>
 			<input type="hidden" id="basePath" value="${basePath}"/>

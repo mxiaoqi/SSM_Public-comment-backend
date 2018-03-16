@@ -12,7 +12,7 @@
 		<script type="text/javascript" src="${basePath}/js/content/adAdd.js"></script>
 	</head>
 	<body style="background: #e1e9eb;">
-		<form id="mainForm" method="post" action="${basePath}/ad/add.action" enctype="multipart/form-data">
+		<form id="mainForm" method="post" action="${basePath}/ad/add" enctype="multipart/form-data">
 			<input type="hidden"  id="message" value="${pageCode.msg}"/>
 			<input type="hidden" id="basePath" value="${basePath}"/>
 			<div class="right">

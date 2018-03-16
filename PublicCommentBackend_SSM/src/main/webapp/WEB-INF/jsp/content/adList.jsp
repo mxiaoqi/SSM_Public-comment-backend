@@ -22,7 +22,7 @@
 	src="${basePath}/js/content/adList.js"></script>
 </head>
 <body style="background: #e1e9eb;">
-	<form action="${basePath}/ad/search.action"
+	<form action="${basePath}/ad/search"
 		id="mainForm" method="post">
 		<input type="hidden" id="id" name="id" /> 
 		<input type="hidden"
@@ -46,7 +46,7 @@
 							<td style="text-align: right;" width="150"><input
 								class="tabSub" value="查询" onclick="search('1');" type="button" />&nbsp;&nbsp;&nbsp;&nbsp;
 								<input class="tabSub" value="添加"
-								onclick="location.href='${basePath}/ad/addList.action'"
+								onclick="location.href='${basePath}/ad/add'"
 								type="button" /></td>
 						</tr>
 					</tbody>
