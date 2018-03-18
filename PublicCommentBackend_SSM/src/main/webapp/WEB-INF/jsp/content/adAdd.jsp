@@ -7,7 +7,10 @@
 		<link rel="stylesheet" type="text/css" href="${basePath}/css/all.css"/>
 		<link rel="stylesheet" type="text/css" href="${basePath}/css/pop.css"/>
 		<link rel="stylesheet" type="text/css" href="${basePath}/css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="${basePath}/css/jquery.validate.css"/>
 		<script type="text/javascript" src="${basePath}/js/common/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="${basePath}/js/common/validation/jquery.validate.js"></script>
+		<script type="text/javascript" src="${basePath}/js/common/validation/messages_zh.js"></script>
 		<script type="text/javascript" src="${basePath}/js/common/common.js"></script>
 		<script type="text/javascript" src="${basePath}/js/content/adAdd.js"></script>
 	</head>
@@ -21,7 +24,7 @@
 					<p class="g_title fix">新增广告</p>
 					<table class="tab1" width="100%">
 						<tbody>
-							<tr>
+						<tr>
 							<td align="right" width="10%">标题<font color="red">*</font>：</td>
 							<td width="30%">
 								<input id="title" name="title" class="allInput" style="width:100%;" type="text"/>

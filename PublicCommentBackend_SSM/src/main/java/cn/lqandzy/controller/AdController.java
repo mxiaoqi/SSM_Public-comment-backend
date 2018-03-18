@@ -12,7 +12,7 @@ import cn.lqandzy.dto.AdDto;
 import cn.lqandzy.service.AdService;
 
 /**
- * 
+ * 广告控制层
  * @author muqi
  *
  */
@@ -71,6 +71,8 @@ public class AdController {
 		
 		//储存当前分页数
 		model.addAttribute("currentPage", currentPage);
+		
+		//重新去查询adList(虽然currentPage>totalpage,但是会被page对象判断后重新赋值)
 		return "forward:/ad/search";
 	}
 	
@@ -103,12 +105,13 @@ public class AdController {
 	 */
 	@RequestMapping("/modify")
 	public String modify(Model model, AdDto adDto) {
-		model.addAttribute("modifyObj", adDto);
 		if (adService.modify(adDto)) {
 			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.MODIFY_SUCCESS);
 		} else {
 			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.MODIFY_FAIL);
 		}
+		//重新从数据库取值，放在修改后图片不可查
+		model.addAttribute("modifyObj", adService.getById(adDto.getId()));
 		return "/content/adModify";
 	}
 	

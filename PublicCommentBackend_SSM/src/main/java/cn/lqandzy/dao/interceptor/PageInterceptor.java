@@ -20,7 +20,11 @@ import org.apache.ibatis.reflection.SystemMetaObject;
 
 import cn.lqandzy.bean.BaseBean;
 import cn.lqandzy.bean.Page;
-
+/**
+ * mybatis分页拦截器
+ * @author 慕祈
+ *
+ */
 @Intercepts({@Signature(type=StatementHandler.class,method="prepare",args={Connection.class,Integer.class })})
 public class PageInterceptor implements Interceptor{
 	/**

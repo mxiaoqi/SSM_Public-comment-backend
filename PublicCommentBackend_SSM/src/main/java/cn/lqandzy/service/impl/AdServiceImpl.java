@@ -1,8 +1,12 @@
 package cn.lqandzy.service.impl;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,9 +15,10 @@ import cn.lqandzy.bean.Ad;
 import cn.lqandzy.dao.AdDao;
 import cn.lqandzy.dto.AdDto;
 import cn.lqandzy.service.AdService;
+import cn.lqandzy.util.FileUtil;
 
 /**
- * 
+ * 广告服务层的实现
  * @author Administrator
  *
  */
@@ -28,6 +33,7 @@ public class AdServiceImpl implements AdService {
 	@Value("${adImage.url}")
 	private String adImageUrl;
 
+	private static Logger logger = LoggerFactory.getLogger(AdServiceImpl.class);  
 	
 	@Override
 	public boolean addAd(AdDto adDto) throws Exception {
@@ -53,7 +59,7 @@ public class AdServiceImpl implements AdService {
 				BeanUtils.copyProperties(adDto, ad);
 				ad.setImgFileName(imgFileName);
 			} catch (Exception e) {
-				// TODO 以后可以添加日志的功能
+				logger.error("广告模块addAd发生错误"+e);
 				return false;
 			}
 		/************** 保存图片业务 ************/	
@@ -88,6 +94,9 @@ public class AdServiceImpl implements AdService {
 		return result;
 	}
 
+	/**
+	 * 删除广告
+	 */
 	@Override
 	public int deleteAd(Long id) throws Exception {
 		int delete=0;
@@ -98,52 +107,52 @@ public class AdServiceImpl implements AdService {
 		return delete;
 	}
 
+	/**
+	 * 修改广告
+	 */
 	@Override
 	public boolean modify(AdDto adDto) {
-		return false;
-		/*Ad ad = new Ad();
-		
+		Ad ad = null;
 		ad=adDao.selectById(adDto.getId());
-		
+		//查询出图片名
 		String fileName = ad.getImgFileName();
-		
-		
-		
 		BeanUtils.copyProperties(adDto, ad);
-		
+		//修改时可以不比修改图片，判断图片是否为空
 		if (adDto.getImgFile() != null && adDto.getImgFile().getSize() > 0) {
 			try {
 				//保存图片
 				ad.setImgFileName(FileUtil.save(adDto.getImgFile(), adImageSavePath));
+				
+				//删除原来的图片(因为有新的图片)
+				if (fileName != null) {
+					FileUtil.delete(adImageSavePath + fileName);
+				}
 			} catch (IllegalStateException | IOException e) {
-				// TODO 需要添加日志
+				logger.error("广告模块modify出错"+e);
 				return false;
 			}
 		}
-		
-		
+		//更新的行数
 		int updateCount = adDao.update(ad);
-		
 		if (updateCount != 1) {
 			return false;
 		}
 		
-		
-		if (fileName != null) {
-			return FileUtil.delete(adImageSavePath + fileName);
-		}
-		
-		return true;*/
+		return true;
 	}
 
+	/**
+	 * 查询单个广告的信息
+	 */
 	@Override
 	public AdDto getById(Long id) {
-		/*AdDto adDto=new AdDto();
+		AdDto adDto=new AdDto();
 		Ad ad = adDao.selectById(id);
-		BeanUtils.copyProperties(ad, adDto);
-		adDto.setImg(adImageUrl+ad.getImgFileName());*/
 		
-		return null;
+		BeanUtils.copyProperties(ad, adDto);
+		adDto.setImg(adImageUrl+ad.getImgFileName());
+		
+		return adDto;
 	}
 
 }

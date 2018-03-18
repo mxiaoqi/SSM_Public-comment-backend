@@ -41,7 +41,7 @@
 					<tbody>
 						<tr>
 							<td align="right" width="80">标题：</td>
-							<td><input name="title" id="title" value="" class="allInput"
+							<td><input name="title" id="title" value="${searchParam.title }" class="allInput"
 								type="text" /></td>
 							<td style="text-align: right;" width="150"><input
 								class="tabSub" value="查询" onclick="search('1');" type="button" />&nbsp;&nbsp;&nbsp;&nbsp;

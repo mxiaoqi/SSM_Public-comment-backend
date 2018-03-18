@@ -5,19 +5,17 @@
 <script type="text/javascript">
 	//返回分页数量 
 	function transCurrentPage(currentPage) {
-		//计算分页数量
+		//计算分页数量,解决分页问题
 		var rule = /^[0-9]*[1-9][0-9]*$/;
 		if(!rule.test(currentPage)) {
 			currentPage = 1;
 		}
-		
 		//计算完成分页，将主权交回去。调用其他的js方法
 		eval("${jsMethodName}(currentPage)");
 	}
 </script>
 
 <div class="page fix">
-	${page.currentPage}    
 	<a href="javascript:transCurrentPage('1');" class="first">首页</a>
 	<a href="javascript:transCurrentPage('${page.currentPage - 1}');" class="pre">上一页</a>
 	

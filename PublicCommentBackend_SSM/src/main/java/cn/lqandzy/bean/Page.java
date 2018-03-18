@@ -2,6 +2,8 @@ package cn.lqandzy.bean;
 
 /**
  * 分页对象
+ * @author 慕祈
+ *
  */
 public class Page {
 	

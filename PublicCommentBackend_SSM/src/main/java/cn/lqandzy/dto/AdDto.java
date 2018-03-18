@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import cn.lqandzy.bean.Ad;
 
 /** 
-* 
+* ad类的扩展类，因为前端的需求，需要把ad类扩展（也可以是vo）
 * @author : 慕祈
 * @date 创建时间：2018年3月15日 下午8:05:12 
 * @version 1.0 

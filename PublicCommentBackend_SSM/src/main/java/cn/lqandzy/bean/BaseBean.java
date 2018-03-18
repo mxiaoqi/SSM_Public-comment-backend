@@ -1,6 +1,6 @@
 package cn.lqandzy.bean;
 /** 
-* 
+* 基础bean，用来给bean层放一些共同属性
 * @author : 慕祈
 * @date 创建时间：2018年3月16日 下午7:04:40 
 * @version 1.0 

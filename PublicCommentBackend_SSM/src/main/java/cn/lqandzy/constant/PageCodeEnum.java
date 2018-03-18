@@ -1,8 +1,9 @@
 package cn.lqandzy.constant;
+
 /**
- * 
- * @author 慕祈
  * 通用页面信息枚举
+ * @author 慕祈
+ * 
  */
 public enum PageCodeEnum {
 	//商品添加成功信息

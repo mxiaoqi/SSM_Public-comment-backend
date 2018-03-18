@@ -19,6 +19,7 @@
 			<input type="hidden" name="id" value="${modifyObj.id}"/>
 			<input type="hidden" id="message" value="${pageCode.msg}"/>
 			<input type="hidden" id="basePath" value="${basePath}"/>
+			
 			<div class="right">
 				<div class="current">当前位置：<a href="###">内容管理</a> &gt; 广告管理</div>
 				<div class="rightCont">
@@ -34,6 +35,7 @@
 							<td width="30%">
 								<a href="${modifyObj.img}">查看图片</a>
 								<input type="hidden" name="img" value="${modifyObj.img}"/>
+								<!--用户可以不上传图片 -->
 								<input id="imgFile" name="imgFile" class="allInput" style="width:100%;" type="file"/>
 							</td>
 						</tr>

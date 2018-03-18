@@ -5,8 +5,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<!-- 全局setting配置，根据需要添加 -->
 	<settings>
+		<!-- 启用别名  -->
 		<setting name="useGeneratedKeys" value="true"/>
+		<!-- 别名驼峰命名 -->
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<!-- 显示sql -->
+		<setting name="logImpl" value="STDOUT_LOGGING"/>
 	</settings>
 	
 	<!-- 配置别名 -->
@@ -20,9 +24,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	必须遵循：mapper.xml和mapper.java文件同名且在一个目录 
 	 -->
 	 
-	 
+	 <!--分页拦截器  -->
 	 <plugins>
        <plugin interceptor="cn.lqandzy.dao.interceptor.PageInterceptor"></plugin>
      </plugins>
+	
 	
 </configuration>

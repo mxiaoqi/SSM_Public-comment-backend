@@ -19,30 +19,30 @@
 	<delete id="delete" parameterType="Long">
 		delete from ad where id= #{id}
 	</delete>
-	<!-- 
+	
 	<select id="selectById" parameterType="Long" resultType="ad">
-		select * from ad where id=#{id};
-	</select>
+		select * from ad where id=#{id}
+	</select>	
+	
 	
 	<update id="update" parameterType="ad">
-		update ad
+		update ad 
 		<set>
 			<if test="title != null">
 				title = #{title},
 			</if>
-			<if test="imgFileName != null">
-				img_file_name = #{imgFileName},
+			<if test="imgFileName !=null">
+				img_file_name=#{imgFileName},				
 			</if>
 			<if test="link != null">
 				link = #{link},
 			</if>
 			<if test="weight != null">
-				weight = #{weight},
+				weight = #{weight},	
 			</if>
 		</set>
 		where id=#{id}
 	</update>
-	 -->
 	
 	
 </mapper>

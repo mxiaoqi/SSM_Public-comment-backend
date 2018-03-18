@@ -4,7 +4,7 @@ import java.util.List;
 
 import cn.lqandzy.dto.AdDto;
 /**
- * 
+ * 广告层
  * @author MuQi
  *
  */
