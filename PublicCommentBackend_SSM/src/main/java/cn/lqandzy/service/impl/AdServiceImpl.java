@@ -72,7 +72,6 @@ public class AdServiceImpl implements AdService {
 			//文件为空，不允许保存
 			return false;
 		}
-
 	}
 
 	/**
