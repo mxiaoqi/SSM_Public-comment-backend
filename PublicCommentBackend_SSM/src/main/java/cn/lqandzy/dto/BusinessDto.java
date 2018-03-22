@@ -53,7 +53,8 @@ public class BusinessDto extends Business{
 	@Override
 	public String toString() {
 		return "BusinessDto [img=" + img + ", imgFile=" + imgFile + ", keyword=" + keyword + ", mumber=" + mumber
-				+ ", star=" + star + "]";
+				+ ", star=" + star + ", toString()=" + super.toString() + "]";
 	}
+	
 	
 }

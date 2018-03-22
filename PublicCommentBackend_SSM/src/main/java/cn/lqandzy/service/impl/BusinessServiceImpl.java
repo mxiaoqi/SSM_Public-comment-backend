@@ -14,6 +14,7 @@ import cn.lqandzy.bean.Business;
 import cn.lqandzy.dao.BusinessDao;
 import cn.lqandzy.dto.BusinessDto;
 import cn.lqandzy.service.BusinessService;
+import cn.lqandzy.util.FileUtil;
 
 /** 
 * 
@@ -85,7 +86,7 @@ public class BusinessServiceImpl implements BusinessService{
 				BeanUtils.copyProperties(businessDto, business);
 				business.setImgFileName(imgFileName);
 			} catch (Exception e) {
-				logger.error("广告模块addAd发生错误"+e);
+				logger.error("商户模块insert发生错误"+e);
 				return false;
 			}
 			//保存商户信息
@@ -95,6 +96,45 @@ public class BusinessServiceImpl implements BusinessService{
 			//文件为空就不允许保存
 			return false;
 		}
+	}
+
+	@Override
+	public BusinessDto getById(Long id) {
+		BusinessDto businessDto=new BusinessDto();
+		
+		Business business = businessDao.selectById(id);
+		
+		BeanUtils.copyProperties(business, businessDto);
+		
+		businessDto.setImg(businessImageUrl+business.getImgFileName());
+		
+		return businessDto;
+	}
+
+	@Override
+	public boolean modify(BusinessDto businessDto) {
+		//原属性
+		Business business=businessDao.selectById(businessDto.getId());
+		
+		BeanUtils.copyProperties(business, businessDto);
+		
+		if(businessDto.getImgFile()!=null&&businessDto.getImgFile().getSize()>0){
+			//用户修改存在图片
+			try {
+				// 保存图片到磁盘
+				String save = FileUtil.save(businessDto.getImgFile(), businessImageSavePath);
+				//删除原图片
+				FileUtil.delete(businessImageSavePath+business.getImgFileName());
+				//spring的对象赋值类
+				business.setImgFileName(save);
+			} catch (Exception e) {
+				logger.error("商户模块modify发生错误"+e);
+				return false;
+			}
+		}
+		businessDao.updateBusinessById(business);
+		
+		return true;
 	}
 
 }

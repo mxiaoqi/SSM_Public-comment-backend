@@ -26,4 +26,18 @@ public interface BusinessService {
 	 * @return
 	 */
 	boolean insert(BusinessDto businessDto);
+	
+	/**
+	 * 根据id获取需要的商户
+	 * @param id 商户的id
+	 * @return
+	 */
+	BusinessDto getById(Long id);
+	
+	/**
+	 * 修改商户模块
+	 * @param businessDto
+	 * @return
+	 */
+	boolean modify(BusinessDto businessDto);
 }

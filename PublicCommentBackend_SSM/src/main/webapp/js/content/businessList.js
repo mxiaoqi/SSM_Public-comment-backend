@@ -10,5 +10,5 @@ function search() {
 }
 
 function modifyInit(id) {
-	location.href = $("#basePath").val() + "/businesses/" + id;
+	location.href = $("#basePath").val() + "/businesses/modifyInit/" + id;
 }

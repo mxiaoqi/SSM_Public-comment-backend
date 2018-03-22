@@ -17,9 +17,10 @@
 		<script type="text/javascript" src="${basePath}/js/content/businessModify.js"></script>
 	</head>
 	<body style="background: #e1e9eb;">
-		<form id="mainForm" method="post" action="${basePath}/businesses/${modifyObj.id}" enctype="multipart/form-data">
-			<input type="hidden" id="message" value="${pageCode.msg}"/>
-			<input type="hidden" name="_method" value="PUT"/>
+		<form id="mainForm" method="post" action="${basePath}/businesses/modify" enctype="multipart/form-data">
+			<input type="hidden" id="message"  value="${pageCode.msg}"/>
+			<input type="hidden" id="id" name="id" value="${modifyObj.id}"/>
+			
 			<div class="right">
 				<div class="current">当前位置：<a href="###">内容管理</a> &gt; 商户管理</div>
 				<div class="rightCont">

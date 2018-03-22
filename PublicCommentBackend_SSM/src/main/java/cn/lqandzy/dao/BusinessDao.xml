@@ -54,4 +54,24 @@
 		insert into business(img_file_name,title,subtitle,price,distance,number,`desc`,city,category,star_total_num,comment_total_num)
 		values(#{imgFileName},#{title},#{subtitle},#{price},#{distance},#{number},#{desc},#{city},#{category},#{starTotalNum},#{commentTotalNum})
 	</insert>
+	
+	<update id="updateBusinessById" parameterType="business">
+		update business set img_file_name=#{imgFileName},
+		title=#{title},
+		subtitle=#{subtitle},
+		price=#{price},
+		distance=#{distance},
+		number=#{number},
+		`desc`=#{desc},
+		city=#{city},
+		category=#{category},
+		star_total_num=#{starTotalNum},
+		comment_total_num=#{commentTotalNum}
+		where id=#{id}
+	</update>
+	
+	<select id="selectById" parameterType="Long" resultType="business">
+		select b.id,b.img_file_name,b.title,b.subtitle,b.price,b.distance,b.number,b.`desc`,b.city,b.category,b.star_total_num,b.comment_total_num
+		from business b where  b.id=#{id}
+	</select>
 </mapper>

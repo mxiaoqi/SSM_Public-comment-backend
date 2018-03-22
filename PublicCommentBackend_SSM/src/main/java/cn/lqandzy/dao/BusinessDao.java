@@ -3,7 +3,6 @@ package cn.lqandzy.dao;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 import cn.lqandzy.bean.Business;
 
 public interface BusinessDao {
@@ -45,4 +44,11 @@ public interface BusinessDao {
      * @return
      */
     int updateStar(Map<String,Date> map);
+    
+    /**	
+     * 根据id修改商户
+     * @param business 修改的商户数据
+     * @return
+     */
+    int updateBusinessById(Business business);
 }

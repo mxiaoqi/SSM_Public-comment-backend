@@ -5,13 +5,13 @@
 	id="WebApp_ID" version="3.1">
 	<display-name>PublicCommentBackend_SSM</display-name>
 	<!-- root的上下文 -->
-	<!-- <context-param>
+	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring/root-context.xml</param-value>
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener> -->
+	</listener>
 	
 	<!-- 导入 springmvc的上下文-->
 	<servlet>
@@ -26,7 +26,6 @@
 		<servlet-name>springMVC</servlet-name>
         <!-- 拦截所有请求，静态资源也会被拦截 -->
         <url-pattern>/</url-pattern>
-		<!-- <url-pattern>*.action</url-pattern> -->
 	</servlet-mapping>
 
 	<!-- 编码过滤器 -->
@@ -43,10 +42,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-<<<<<<< HEAD
-=======
 	
->>>>>>> 6b3587515296943b0f923417302212d4ac9f6af9
 	<!-- 文件上传过滤器 -->
 	<filter>
 		<filter-name>MultipartFilter</filter-name>
@@ -61,11 +57,8 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-<<<<<<< HEAD
 	<!-- hidden隐藏域方法过滤器   用来from表单与rest风格 -->
-=======
 	<!-- http请求过滤器，这样可以支持表单提交put和delete的请求风格 -->
->>>>>>> 6b3587515296943b0f923417302212d4ac9f6af9
 	<filter>
 		<filter-name>hiddenHttpMethodFilter</filter-name>
 		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
@@ -74,6 +67,11 @@
 		<filter-name>hiddenHttpMethodFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
+	
+	
+
+	
 	
 	<!-- 引入共通jsp，这样每个jsp都可以使用basepath路径 -->
 	<jsp-config>

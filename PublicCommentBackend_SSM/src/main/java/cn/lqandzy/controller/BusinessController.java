@@ -1,16 +1,14 @@
 package cn.lqandzy.controller;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import cn.lqandzy.bean.Dic;
 import cn.lqandzy.constant.DicTypeConst;
 import cn.lqandzy.constant.PageCodeEnum;
@@ -136,25 +134,49 @@ public class BusinessController {
 	/**
 	 * 修改页初始化
 	 */
-	@RequestMapping("/modifyInit")
-	public String modifyInit(Model model, @RequestParam("id") Long id) {
+	@RequestMapping(value="/modifyInit/{id}",method={RequestMethod.GET})
+	public String modifyInit(Model model, @PathVariable("id") Long id) {
+		//定义查询的dic类
+		Dic dic=new Dic();
+		
 		model.addAttribute("modifyObj", businessService.getById(id));
-		return "/content/adModify";
+		//返回type为city的dic集合
+		dic.setType(DicTypeConst.CITY);
+		model.addAttribute("cityList",dicService.listDics(dic));
+		//返回type为category的dic集合
+		dic.setType(DicTypeConst.CATEGORY);
+		model.addAttribute("categoryList",dicService.listDics(dic));
+		return "/content/businessModify";
 	}
 	
 	/**
 	 * 修改
 	 */
-	@RequestMapping("/modify")
+	@RequestMapping(value="/modify",method={RequestMethod.POST})
 	public String modify(Model model, BusinessDto businessDto) {
-		if (adService.modify(adDto)) {
+		//定义查询的dic类
+		Dic dic=new Dic();
+		
+		if (businessService.modify(businessDto)) {
 			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.MODIFY_SUCCESS);
+			//返回type为city的dic集合
+			dic.setType(DicTypeConst.CITY);
+			model.addAttribute("cityList",dicService.listDics(dic));
+			//返回type为category的dic集合
+			dic.setType(DicTypeConst.CATEGORY);
+			model.addAttribute("categoryList",dicService.listDics(dic));
 		} else {
 			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.MODIFY_FAIL);
+			//返回type为city的dic集合
+			dic.setType(DicTypeConst.CITY);
+			model.addAttribute("cityList",dicService.listDics(dic));
+			//返回type为category的dic集合
+			dic.setType(DicTypeConst.CATEGORY);
+			model.addAttribute("categoryList",dicService.listDics(dic));
 		}
 		//重新从数据库取值，防止修改后图片不可查
-		model.addAttribute("modifyObj", adService.getById(businessDto.getId()));
-		return "/content/adModify";
+		model.addAttribute("modifyObj", businessService.getById(businessDto.getId()));
+		return "/content/businessModify";
 	}
 	
 }
