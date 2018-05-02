@@ -41,4 +41,5 @@ public enum PageCodeEnum {
 	public String getMsg() {
 		return msg;
 	}	
+	
 }

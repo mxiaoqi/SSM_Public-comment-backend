@@ -74,4 +74,41 @@
 		select b.id,b.img_file_name,b.title,b.subtitle,b.price,b.distance,b.number,b.`desc`,b.city,b.category,b.star_total_num,b.comment_total_num
 		from business b where  b.id=#{id}
 	</select>
+	
+	<select id="selectLikeByPage" resultType="Business">
+		select id,img_file_name,title,subtitle,price,distance,number,`desc`,city,category,star_total_num,comment_total_num
+		from business
+		<where>
+			<if test="title != null and title != ''
+			 and subtitle != null and subtitle != ''
+			 and desc != null and desc != ''">
+				and
+				(title like '%' #{title} '%' or subtitle like '%' #{subtitle} '%' or `desc` like '%' #{desc} '%')
+			</if>
+			<if test="city != null and city != ''">
+				and city = #{city}
+			</if>
+			<if test="category != null and category != ''">
+				and category = #{category}
+			</if>
+		</where>
+		order by id
+	</select>
+	
+	<delete id="deleteBusinessById" parameterType="Long">
+		delete from business where id=#{id}
+	</delete>
+	
+	<update id="updateStar">
+		update business b,
+		
+		(select o.business_id,sum(c.star) star_num,count(*) comment_num from comment c,orders o where c.orders_id=o.id and c.create_time &lt;= #{endTime}
+		<if test="startTime != null">
+			and c.create_time &gt; #{startTime}
+		</if>
+		group by o.business_id)t
+		
+		set b.star_total_num = b.star_total_num + t.star_num,b.comment_total_num = b.comment_total_num + t.comment_num
+		where b.id=t.business_id
+	</update>
 </mapper>

@@ -51,4 +51,10 @@ public interface BusinessDao {
      * @return
      */
     int updateBusinessById(Business business);
+    
+    /**
+     * 删除商户
+     */
+    int deleteBusinessById(Long id);
+    
 }

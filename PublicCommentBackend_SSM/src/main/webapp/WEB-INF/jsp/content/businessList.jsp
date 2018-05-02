@@ -15,9 +15,9 @@
 	</head>
 	<body style="background: #e1e9eb;">
 		<form action="${basePath}/businesses/search" id="mainForm" method="post">
-			<input type="hidden" name="_method" value="DELETE"/>
 			<input type="hidden" id="basePath" value="${basePath}"/>
 			<input type="hidden" name="page.currentPage" id="currentPage" value="1"/>
+			<input type="hidden" id="message" value="${pageCode.msg}" /> 
 			<div class="right">
 				<div class="current">当前位置：<a href="#">内容管理</a> &gt; 商户管理</div>
 				<div class="rightCont">

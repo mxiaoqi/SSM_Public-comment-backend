@@ -1,7 +1,10 @@
 package cn.lqandzy.service;
 
 import java.util.List;
+
+import cn.lqandzy.bean.Business;
 import cn.lqandzy.dto.BusinessDto;
+import cn.lqandzy.dto.BusinessListDto;
 
 /** 
 * 
@@ -40,4 +43,19 @@ public interface BusinessService {
 	 * @return
 	 */
 	boolean modify(BusinessDto businessDto);
+	
+	/**
+	 * 删除商户模块
+	 * @param id 要删除的id
+	 * @return
+	 */
+	boolean remove(Long id);
+	
+	/**
+	 * 前端首页商户api展示所需要的数据
+	 * @param businessDto 封装了查询条件
+	 * @return
+	 */
+	BusinessListDto searchByPageForApi(BusinessDto businessDto); 
+	
 }

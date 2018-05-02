@@ -11,9 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import cn.lqandzy.bean.Business;
+import cn.lqandzy.bean.Page;
+import cn.lqandzy.constant.CategoryConst;
 import cn.lqandzy.dao.BusinessDao;
 import cn.lqandzy.dto.BusinessDto;
+import cn.lqandzy.dto.BusinessListDto;
 import cn.lqandzy.service.BusinessService;
+import cn.lqandzy.util.CommonUtil;
 import cn.lqandzy.util.FileUtil;
 
 /** 
@@ -116,7 +120,7 @@ public class BusinessServiceImpl implements BusinessService{
 		//原属性
 		Business business=businessDao.selectById(businessDto.getId());
 		
-		BeanUtils.copyProperties(business, businessDto);
+		BeanUtils.copyProperties(businessDto, business);
 		
 		if(businessDto.getImgFile()!=null&&businessDto.getImgFile().getSize()>0){
 			//用户修改存在图片
@@ -135,6 +139,60 @@ public class BusinessServiceImpl implements BusinessService{
 		businessDao.updateBusinessById(business);
 		
 		return true;
+	}
+
+	@Override
+	public boolean remove(Long id) {
+		int i = businessDao.deleteBusinessById(id);
+		if(i==0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
+
+	@Override
+	public BusinessListDto searchByPageForApi(BusinessDto businessDto) {
+		BusinessListDto result=new BusinessListDto();
+		//组织查询条件
+		Business businessForCondition=new Business();
+		BeanUtils.copyProperties(businessDto, businessForCondition);
+		
+		//当关键字不为空，把关键字的值分别设置到标题，副标题，描述中
+		//TODO 改进做法  全文检索
+		if(!CommonUtil.isEmpty(businessDto.getKeyword())){
+			businessForCondition.setTitle(businessDto.getKeyword());
+			businessForCondition.setSubtitle(businessDto.getKeyword());
+			businessForCondition.setDesc(businessDto.getKeyword());
+		}
+		
+		//当类别为全部all时,需要将类别清空，不作为条件过滤
+		if(businessDto.getCategory()!=null&&CategoryConst.ALL.equals(businessDto.getCategory())){
+			businessForCondition.setCategory(null);
+		}
+		
+		//前端分页页码从0开始计算，这里加1
+		int currentPage=businessForCondition.getPage().getCurrentPage();
+		businessForCondition.getPage().setCurrentPage(currentPage+1);
+		
+		List<Business> list = businessDao.selectLikeByPage(businessForCondition);
+		//根据查询结果设置hasMore
+		Page page = businessForCondition.getPage();
+		result.setHasMore(page.getCurrentPage()<page.getTotalPage());
+		
+		for (Business business : list) {
+			BusinessDto businessDtoTemp=new BusinessDto(); 
+			result.getData().add(businessDtoTemp);
+			BeanUtils.copyProperties(business, businessDtoTemp);
+			businessDtoTemp.setImg(businessImageUrl+business.getImgFileName());
+			//兼容前端的属性，前端number写成了member
+			businessDtoTemp.setMumber(business.getNumber());
+			
+		}
+		
+		return result;
 	}
 
 }

@@ -1,11 +1,23 @@
+//给修改的表单添加验证信息
+$(function(){
+	//调用显示信息的方法
+	if($("#message").val().length>0){
+		common.showMessage($("#message").val());
+		//显示一次后，将消息制空
+		$("#message").attr("value","");
+	}
+})
+
+
 function remove(id) {
-	$("#mainForm").attr("action",$("#basePath").val() + "/businesses/" + id);
-	$("#mainForm").submit();
+	if(confirm("确定要删除这条广告吗？？？")) {
+		$("#mainForm").attr("action",$("#basePath").val() + "/businesses/remove?id="+id);
+		$("#mainForm").submit();
+	}
 }
 
-function search() {
-	$("#mainForm").attr("method","GET");
-	$("#mainForm").attr("action",$("#basePath").val() + "/businesses");
+function search(currentPage) {
+	$("#currentPage").val(currentPage);
 	$("#mainForm").submit();
 }
 

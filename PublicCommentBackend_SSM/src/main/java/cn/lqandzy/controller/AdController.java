@@ -18,7 +18,7 @@ import cn.lqandzy.service.AdService;
  */
 @Controller
 @RequestMapping("/ad")
-public class AdController {
+public class AdController extends BaseController{
 	@Autowired
 	private AdService adService;
 	

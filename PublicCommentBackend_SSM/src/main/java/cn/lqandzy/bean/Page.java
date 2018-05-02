@@ -65,4 +65,11 @@ public class Page {
 	public void setPageNumber(int pageNumber) {
 		this.pageNumber = pageNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "Page [totalNumber=" + totalNumber + ", currentPage=" + currentPage + ", totalPage=" + totalPage
+				+ ", pageNumber=" + pageNumber + "]";
+	}
+	
 }

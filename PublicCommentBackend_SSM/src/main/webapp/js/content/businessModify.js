@@ -10,7 +10,6 @@ $(function(){
 
 
 function modify() {
-	debugger;
 	if(check()) {
 		$("#mainForm").submit();
 	}
